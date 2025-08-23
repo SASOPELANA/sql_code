@@ -1,3 +1,16 @@
-# Ejemplo de código SQL y Bases de Datos
+# Ejecutar un script SQL en la base de datos
 
-# Este es un ejemplo de código SQL para insertar datos en una base de datos.
+Este archivo explica cómo ejecutar scripts `.sql` que contienen instrucciones `INSERT` (o cualquier otro SQL) en tu base de datos.
+
+---
+
+## Ejecutar scripts SQL
+
+Podés ejecutar un archivo `.sql` usando MariaDB o mycli. Los ejemplos están juntos para mayor claridad:
+
+```bash
+# Con MariaDB
+mariadb -u <usuario> -p <nombre_base_de_datos> < archivo.sql
+
+# Con mycli
+mycli -u <usuario> <nombre_base_de_datos> < archivo.sql

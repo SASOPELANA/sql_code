@@ -14,3 +14,8 @@ mariadb -u <usuario> -p <nombre_base_de_datos> < archivo.sql
 
 # Con mycli
 mycli -u <usuario> <nombre_base_de_datos> < archivo.sql
+```
+
+# Herramiestas usadas 
+- [Mariadb](https://mariadb.org/download/?t=mariadb&p=mariadb&r=12.0.2&os=Linux&cpu=x86_64&pkg=tar_gz&i=systemd&mirror=insacom)
+- [Mycli](https://github.com/dbcli/mycli)

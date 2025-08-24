@@ -1,0 +1,28 @@
+---------------------------------------------------
+CONSIDERACIONES PARA CREAR RELACIONES ENTRE TABLAS:
+---------------------------------------------------
+El FOREIGN KEY se define en el momento que se crean las tablas de la base datos, dentro de la sentencia CREATE TABLE.
+Ambas tablas deben ser InnoDB y no deben ser tablas temporales.
+La tabla padre (tabla referenciada) debe crearse primero y el campo a utilizar para la relación debe ser CLAVE PRIMARIA.
+En la tabla hija es donde se define el FOREIGN KEY y hace referencia a la tabla padre.
+El campo foráneo (de la tabla hija) y campo clave (de la tabla padre) deben ser definidos con el mismo tipo de dato.
+
+------------------------------------------------------------
+Sentencias INSERT, UPDATE y DELETE sobre tablas relacionadas
+------------------------------------------------------------
+Caso INSERT
+InnoDB rechaza cualquier operación INSERT en un registro en una tabla hija cuyo valor en la clave foránea no exista en la tabla padre. Se debe insertar primero el valor en la tabla padre para luego poderlo insertar en la tabla hija.
+ 
+Caso UPDATE y DELETE
+La acción que InnoDB realiza para cualquier operación UPDATE o DELETE depende de lo que se haya definido en la subcláusulas ON UPDATE y ON DELETE creada en la cláusula FOREIGN KEY.
+Cuando el usuario intenta borrar o actualizar un registro en una tabla padre se realizará lo siguiente:
+CASCADE: Borra o actualiza el registro en la tabla padre y automáticamente borra o actualiza los registros coincidentes en la tabla hija.
+NO ACTION: No se permite borrar o actualizar ningún valor de clave primaria si en la tabla hija hay un valor de clave foránea relacionada.
+RESTRICT: Rechaza la operación de eliminación o actualización en la tabla padre. NO ACTION y RESTRICT son similares en tanto omiten la cláusula ON DELETE u ON UPDATE.
+---------------------------------------------------------
+SINTAXIS
+---------------------------------------------------------
+FOREIGN KEY(Campo1)  REFERENCES tablapadre (campo2)
+ON DELETE [CASCADE NO ACTION RESTRICT]
+ON UPDATE [CASCADE NO ACTION RESTRICT]
+
